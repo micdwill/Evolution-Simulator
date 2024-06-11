@@ -24,7 +24,7 @@ The project is implemented in C++ and consists of the following core components:
 
 To build and run the simulation, you need the following:
 
-- A C++ compiler supporting C++11 or later.
+- A C++ compiler supporting C++17 or later.
 - CMake (optional, for building the project).
 - Standard C++ libraries.
 
@@ -33,7 +33,7 @@ To build and run the simulation, you need the following:
 To compile the project, you can use a C++ compiler. For example:
 
 ```markdown
-g++ -o evolve evolve.cpp -std=c++11
+g++ -o evolve evolve.cpp -std=c++17
 ```
 This command compiles the `evolve.cpp` source file and generates an executable named `evolve`.
 
