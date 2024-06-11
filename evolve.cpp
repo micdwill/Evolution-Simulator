@@ -20,6 +20,7 @@
 #include <getopt.h>
 #include <unordered_set>
 #include <random>
+#include <fstream>
 
 using namespace std;
 
@@ -42,6 +43,13 @@ struct Tree {
     int fruitHad;
 };
 
+struct PopulationData {
+    size_t generation;
+    size_t totalPopulation;
+    size_t preyPopulation;
+    size_t predatorPopulation;
+};
+
 // To find biggest guys from pointers to guys
 struct CompareGuyPtrSize {
     bool operator()(const Guy* a, const Guy* b) const {
@@ -55,7 +63,10 @@ private:
     // Store all guys and trees
     vector<Guy> guys;
     vector<Tree> trees;
+    vector<PopulationData> populationHistory;
     size_t killCount = 0;
+    int generations = 0;
+    size_t genCount = 0;
 
     // To generate a normal distribution
     double generateNormal(double mean, double stddev) {
@@ -168,6 +179,7 @@ private:
 
     // For printing stats after each generation
     void stats() {
+        genCount++;
         double avSize = 0;
         double avSpeed = 0;
         double avFood = 0;
@@ -221,12 +233,38 @@ private:
         cout << "Average tree location remaining: " << treeLoc << '\n';
         cout << "Average tree height remaining: " << treeHeight << '\n';
 
+        collectPopulationData(genCount, static_cast<size_t>(totAlive),
+        static_cast<size_t>(preyAmount), static_cast<size_t>(predAmount));
+
         if (totAlive == 0) {
             cout << "Population deceased\n";
+            outputPopulationData("out.csv");
             exit(0);
         }
 
         cout << '\n';
+    }
+
+    // Function to output population data to a CSV file
+    void outputPopulationData(const string& filename) {
+        ofstream outputFile(filename);
+
+        if (!outputFile) {
+            cerr << "Error: Unable to open output file." << endl;
+            return;
+        }
+
+        // Write header
+        outputFile << "Generation,Total Population,Prey Population,Predator Population\n";
+
+        // Write population data for each generation
+        for (const auto& data : populationHistory) {
+            outputFile << data.generation << "," << data.totalPopulation << ","
+                       << data.preyPopulation << "," << data.predatorPopulation << "\n";
+        }
+
+        outputFile.close();
+        cout << "Population data has been written to " << filename << endl;
     }
 
 
@@ -298,7 +336,19 @@ public:
         reproduce();
     }
 
-    
+    void doSim() {
+        cin >> generations;
+        for (size_t i = 0; i < generations; i++) {
+            cout << "Generation " << i + 1 << ":\n";
+            doGen();
+        }
+        outputPopulationData("out.csv");
+    }
+
+    void collectPopulationData(size_t generation, size_t total,
+                               size_t prey, size_t predator) {
+        populationHistory.push_back({generation, total, prey, predator});
+    }
 
 
 };
@@ -309,15 +359,7 @@ int main() {
 
     sim.readInput();
 
-    int generations;
-
-    // Take amount of generations and iterate that many times
-    cin >> generations;
-
-    for (size_t i = 0; i < generations; i++) {
-        cout << "Generation " << i + 1 << ":\n";
-        sim.doGen();
-    }
+    sim.doSim();
 
     return 1;
 }
