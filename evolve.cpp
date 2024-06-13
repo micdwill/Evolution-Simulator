@@ -259,8 +259,8 @@ private:
 
         // Write population data for each generation
         for (const auto& data : populationHistory) {
-            outputFile << data.generation << "," << data.totalPopulation << ","
-                       << data.preyPopulation << "," << data.predatorPopulation << "\n";
+            outputFile << data.generation << ", " << data.totalPopulation << ", "
+                       << data.preyPopulation << ", " << data.predatorPopulation << "\n";
         }
 
         outputFile.close();

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolution Simulation</title>
+</head>
+<body>
+  <h1>Evolution Simulation</h1>
+  <div id="simulationForm">
+    <label for="numGuys">Number of Guys:</label>
+    <input type="number" id="numGuys" name="numGuys" min="1" required><br><br>
+
+    <label for="guysData">Guys' Data:</label><br>
+    <textarea id="guysData" name="guysData" rows="10" cols="10" required></textarea><br><br>
+
+    <label for="numTrees">Number of Trees:</label>
+    <input type="number" id="numTrees" name="numTrees" min="1" required><br><br>
+
+    <label for="treesData">Trees' Data:</label><br>
+    <textarea id="treesData" name="treesData" rows="10" cols="10" required></textarea><br><br>
+
+    <label for="numGenerations">Number of Generations:</label>
+    <input type="number" id="numGenerations" name="numGenerations" min="1" required><br><br>
+
+    <button onclick="runSimulation()">Run Simulation</button>
+  </div>
+
+  <div id="simulationOutput">
+    <!-- Simulation results will be displayed here -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
