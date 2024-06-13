@@ -93,14 +93,14 @@ private:
             double newlocation1 = generateNormal(guys[i].location, 0.1);
             double pred1 = static_cast<double>(rand()) / RAND_MAX;
             // Chance of mutating into predator or prey
-            bool predator1 = (pred1 > 0.995) ? guys[i].predator : !guys[i].predator;
+            bool predator1 = (pred1 > 0.995) ? !guys[i].predator : guys[i].predator;
 
             double newSize2 = generateNormal(guys[i].size, 0.5);
             double newSpeed2 = generateNormal(guys[i].speed, 0.5);
             double newFoodNeeded2 = generateNormal(guys[i].foodToNeed, 0.01);
             double newlocation2 = generateNormal(guys[i].location, 0.1);
             double pred2 = static_cast<double>(rand()) / RAND_MAX;
-            bool predator2 = (pred2 > 0.995) ? guys[i].predator : !guys[i].predator;
+            bool predator2 = (pred2 > 0.995) ? !guys[i].predator : guys[i].predator;
 
 
             guys[i] = {newSize1, newSpeed1,
@@ -136,7 +136,7 @@ private:
     // To add new tree offspring
     void addTree(Tree& tree) {
         double pred = static_cast<double>(rand()) / RAND_MAX;
-        if (pred < 0.18) {
+        if (pred < 0.1) {
             double newLoc = generateNormal(tree.location, 0.1);
             double newHeight = generateNormal(tree.height, 1);
             double newFrui = generateNormal(tree.fruitHad, 0.5);
@@ -326,7 +326,7 @@ public:
             // Prey try to get help from other prey, higher chance of success than hunts
             } else {
                 double prob = static_cast<double>(rand()) / RAND_MAX;
-                if (prob > 0.8) {
+                if (prob > 0.5) {
                     guys[i].alive = true;
                 }
             }
