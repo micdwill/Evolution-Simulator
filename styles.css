@@ -3,18 +3,18 @@ body {
     line-height: 1.6;
     margin: 20px;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #8fa4e1;
   }
   
   h1 {
     text-align: center;
-    color: #333;
+    color: #131212;
   }
   
   #simulationForm {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #9ad2c0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@ body {
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: #28ac2d;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -55,7 +55,7 @@ body {
   #simulationOutput {
     margin-top: 20px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #852323;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

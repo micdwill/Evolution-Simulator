@@ -1,14 +1,29 @@
-# Evolutionary Simulation Project
+# Evolution Simulation Project
 
 ## Overview
 
 Welcome to the Evolutionary Simulation project! This project simulates the dynamic interactions and evolution of two species types: *guys* (creatures) and *trees* (food sources). The simulation models how these species evolve over multiple generations through natural selection, competition, predation, and reproduction.
 
-The project is implemented in C++ and consists of the following core components:
+The project is implemented using C++ for the simulation backend, JavaScript (with Node.js) for the frontend user interface, and Python for generating population graphs.
+
+## Components
+
+### Backend (C++)
 
 - **Guy**: Represents a creature with attributes such as size, speed, food requirement, location, and whether it is a predator.
 - **Tree**: Represents a food source with attributes like height, location, and the number of fruits.
-- **Simulation**: The main class that orchestrates the interaction between guys and trees, handling the evolution process over multiple generations.
+- **Simulation**: Orchestrates the interaction between guys and trees, handling the evolution process over multiple generations.
+
+### Frontend (JavaScript, CSS, HTML)
+
+- **index.html**: Provides the user interface for inputting simulation parameters.
+- **script.js**: Handles user input validation, sends data to the server for simulation execution, and displays results back to the user.
+- **server.js**: Node.js server script that handles incoming requests, executes the C++ simulation, and serves the frontend files.
+- **styles.css**: Improves look of user interface
+
+### Graph Generation (Python)
+
+- **graphGens.py**: Python script that reads simulation results from `out.csv`, generates a stacked line graph using `matplotlib`, and visualizes the population dynamics of prey and predator species over generations.
 
 ## Features
 
@@ -24,26 +39,83 @@ The project is implemented in C++ and consists of the following core components:
 
 To build and run the simulation, you need the following:
 
+- Node.js installed on your machine.
 - A C++ compiler supporting C++17 or later.
-- CMake (optional, for building the project).
 - Standard C++ libraries.
+- Python installed with `matplotlib` and `pandas` libraries.
 
-### Building the Project
+### Setting Up the Project
 
-To compile the project, you can use a C++ compiler. For example:
+1. **Clone the repository**:
+
+```markdown
+git clone https://github.com/micdwill/Evolution-Simulator
+cd evolution
+```
+
+2. **Install Node.js dependencies**:
+
+If there are any specific Node.js packages required (such as `express`, `cors`, etc.), install them using:
+
+```markdown
+npm install
+```
+
+3. **Compile the C++ code**:
+
+Compile `evolve.cpp` to generate the `evolve` executable using your preferred C++ compiler (e.g., `g++`).
 
 ```markdown
 g++ -o evolve evolve.cpp -std=c++17
 ```
-This command compiles the `evolve.cpp` source file and generates an executable named `evolve`.
 
-## Running the Simulation
 
-To run the simulation, execute the compiled binary and provide the input as needed. For example:
+### Running the Simulation
 
-```sh
-./evolve < test.txt
+1. **Start the Node.js server**:
+
+Launch the Node.js server which will handle the simulation requests and serve the frontend:
+
+```markdown
+node server.js
 ```
+
+2. **Access the application**:
+
+Open a web browser and navigate to `http://localhost:4454` (or the port specified in `server.js`).
+
+3. **Using the Simulation Interface**:
+
+- **Fill out the form**: Enter the number of guys, guys' data, number of trees, trees' data, and number of generations.
+- **Run Simulation**: Click on the "Run Simulation" button to initiate the simulation.
+- **View Results**: Once the simulation completes, the results (in CSV format) will be displayed on the interface.
+
+## File Structure
+
+- **evolve.cpp**: Contains the main C++ code for simulating the evolution.
+- **server.js**: Node.js server script that handles incoming requests, executes the C++ simulation, and serves the frontend files.
+- **public/index.html**: HTML file providing the user interface for inputting simulation parameters.
+- **public/script.js**: JavaScript file handling user input validation, sending data to the server, and displaying results.
+- **graphGens.py**: Python script to generate a stacked line graph of population dynamics over generations.
+
+## Example Usage
+
+To test the simulation:
+
+1. Modify `input.txt` to adjust simulation parameters or create your own input file.
+2. Run the simulation using the updated `input.txt`:
+
+```markdown
+./evolve < input.txt
+```
+
+3. Generate the population graph using `graphGens.py`:
+
+```markdown
+python graphGens.py
+```
+
+4. Observe the output and adjust parameters as needed for further testing or analysis.
 
 ## Input Format
 
@@ -51,16 +123,16 @@ The input is read from standard input or a file and follows this structure:
 
 1. **Number of Guys**: An integer indicating how many guys will be in the simulation initially.
 2. **Guys' Data**: Each guy is defined by five attributes:
-   - **Size**: The size of the guy.
-   - **Speed**: The speed of the guy.
-   - **Food Needed**: The amount of food the guy needs to survive.
-   - **Location**: The initial location of the guy.
-   - **Predator**: Indicates if the guy is a predator (1 for predator, 0 for prey).
+- **Size**: The size of the guy.
+- **Speed**: The speed of the guy.
+- **Food Needed**: The amount of food the guy needs to survive.
+- **Location**: The initial location of the guy.
+- **Predator**: Indicates if the guy is a predator (1 for predator, 0 for prey).
 3. **Number of Trees**: An integer indicating how many trees will be in the simulation initially.
 4. **Trees' Data**: Each tree is defined by three attributes:
-   - **Height**: The height of the tree.
-   - **Location**: The location of the tree.
-   - **Number of Fruits**: The number of fruits the tree initially has.
+- **Height**: The height of the tree.
+- **Location**: The location of the tree.
+- **Number of Fruits**: The number of fruits the tree initially has.
 
 ### Example input:
 
@@ -90,15 +162,17 @@ The simulation outputs statistics for each generation, including:
 - Average attributes such as size, speed, and food needed.
 - Tree statistics including average height and number of fruits.
 
-## Example Usage
-
-To test the simulation, you can use the provided `test.txt` and `people.txt` files. These files contain sample input data. You can run the simulation with these files to observe different scenarios.
-
 ## Code Structure
 
 - **evolve.cpp**: The main source file containing the implementation of the simulation.
 - **test.txt**: A sample input file for testing the simulation.
 - **people.txt**: Another sample input file with different initial conditions.
+- **input.txt**: Input file written to from user interface
+- **server.js**: Node.js server script that handles incoming requests, executes the C++ simulation, and serves the frontend files.
+- **index.html**: HTML file providing the user interface for inputting simulation parameters.
+- **script.js**: JavaScript file handling user input validation, sending data to the server, and displaying results.
+- **styles.css**: Improves look of user interface
+- **graphGens.py**: Python script to generate a stacked line graph of population dynamics over generations.
 
 ## How It Works
 
