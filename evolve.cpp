@@ -255,7 +255,7 @@ private:
         }
 
         // Write header
-        outputFile << "Generation,Total Population,Prey Population,Predator Population\n";
+        outputFile << "Generation, Total Population, Prey Population, Predator Population\n";
 
         // Write population data for each generation
         for (const auto& data : populationHistory) {
