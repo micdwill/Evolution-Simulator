@@ -70,6 +70,11 @@ function runSimulation() {
       `;
       outputDiv.appendChild(scoreDiv);
 
+      // Update the graph image with cache busting
+const graphImg = document.getElementById('graphImg');
+const timestamp = new Date().getTime(); // Use the current timestamp
+graphImg.src = `popDynamics.png?t=${timestamp}`;
+
       // Find the scoreSection and append the scoreDiv to it
 const scoreSection = document.getElementById('scoreSection');
 if (scoreSection) {

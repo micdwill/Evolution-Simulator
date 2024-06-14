@@ -58,6 +58,13 @@ app.post('/runSimulation', (req, res) => {
       console.log('Simulation standard output:', stdout);
       console.error('Simulation standard error:', stderr);
 
+      // Generate the graph
+      exec('python3 graphGens.py', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error generating graph: ${error}`);
+          return res.status(500).send('Graph generation failed');
+        }
+
       // Read simulation results from file (out.csv)
       const resultFilePath = path.join(__dirname, 'out.csv');
       console.log('Looking for result file at:', resultFilePath);
@@ -86,6 +93,7 @@ app.post('/runSimulation', (req, res) => {
       });
     });
   });
+});
 });
 
 // Example: Start the server
