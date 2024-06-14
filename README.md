@@ -177,6 +177,14 @@ The simulation outputs statistics for each generation, including:
    - **Statistics**: Print statistics for the current generation.
 3. **Repeat**: The process repeats for a specified number of generations.
 
+## Scoring system
+
+This project also acts as a game! Finals scores are shown and high score is maintained. The scoring system is as follows: 
+
+```markdown
+(Final # of guys) / (Original # of guys) * (Original # of trees) * (# of generations)
+```
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request.
