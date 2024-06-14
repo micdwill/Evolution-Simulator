@@ -65,10 +65,12 @@ private:
     vector<Tree> trees;
     vector<PopulationData> populationHistory;
     double score;
+    double totAlive = 0;
     int numGuys;
     int numTrees;
     size_t killCount = 0;
     int generations = 0;
+    int foodIni = 0;
     size_t genCount = 0;
 
     // To generate a normal distribution
@@ -164,7 +166,7 @@ private:
         }
     }
     
-    // Predators try to kill a prey if they need more food
+    // Predators try to kill prey if they need more food
     void kill(size_t i) {
         for (size_t j = 1; j < guys.size(); j++) {
             if (guys[(i + j) % guys.size()].size < guys[i].size) {
@@ -189,7 +191,6 @@ private:
         int fruitNum = 0;
         int predAmount = 0;
         int preyAmount = 0;
-        double totAlive = 0;
         double avLoc = 0;
         double treeLoc = 0;
         double treeHeight;
@@ -248,7 +249,8 @@ private:
 
         cout << '\n';
 
-        score = totAlive / (numGuys * numTrees * genCount);
+        // Final score calculation
+        score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * genCount));
     }
 
     // Function to output population data to a CSV file
@@ -294,6 +296,7 @@ public:
             Tree tree;
             cin >> tree.height >> tree.location >> tree.fruitNum;
             tree.fruitHad = tree.fruitNum;
+            foodIni += tree.fruitHad;
             trees.push_back(tree);
         }
     }
@@ -349,6 +352,8 @@ public:
             cout << "Generation " << i + 1 << ":\n";
             doGen();
         }
+        score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * genCount));
+        cout << "Final Score: " << score << "\n\n";
         outputPopulationData("out.csv");
     }
 

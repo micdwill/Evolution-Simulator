@@ -182,7 +182,7 @@ The simulation outputs statistics for each generation, including:
 This project also acts as a game! Finals scores are shown and high score is maintained. The scoring system is as follows: 
 
 ```markdown
-(Final # of guys) / (Original # of guys) * (Original # of trees) * (# of generations)
+(Final # of guys) / sqrt(Original # of guys) * (Original # of food on trees) * (# of generations)
 ```
 
 ## Contributing
