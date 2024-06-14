@@ -12,7 +12,7 @@
     <label for="numGuys">Number of Guys:</label><br>
     <input type="number" id="numGuys" name="numGuys" min="1" required><br><br>
 
-    <label for="guysData">Guys' Data (Size, Speed, Food Needed, Location (numerical), 0 for Prey and 1 for Predator):</label><br>
+    <label for="guysData">Guys' Data (Size, Speed, Appetite, Location, 0 - Prey and 1 - Predator):</label><br>
     <textarea id="guysData" name="guysData" rows="10" cols="50" required></textarea><br><br>
 
     <label for="numTrees">Number of Trees:</label><br>
@@ -27,9 +27,15 @@
     <button onclick="runSimulation()">Run Simulation</button>
   </div>
 
+  <!-- Section for displaying final score and high score -->
+  <div id="scoreSection" class="scoreDiv">
+    <!-- Scores will be displayed here -->
+  </div>
+
   <div id="simulationOutput">
     <!-- Simulation results will be displayed here -->
   </div>
+
 
   <script src="script.js"></script>
 </body>

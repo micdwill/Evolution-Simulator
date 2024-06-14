@@ -5,7 +5,7 @@ function runSimulation() {
     const treesData = document.getElementById('treesData').value;
     const numGenerations = document.getElementById('numGenerations').value;
   
-    fetch('http://localhost:4456/runSimulation', { // Updated URL here
+    fetch('http://localhost:4456/runSimulation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,9 +22,9 @@ function runSimulation() {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      return response.text(); // Assuming server returns the CSV content as plain text
+      return response.json(); // Assuming server returns the data and high score as JSON
     })
-    .then(data => {
+    .then(({ data, highScore }) => {
       // Clear previous results
       const outputDiv = document.getElementById('simulationOutput');
       outputDiv.innerHTML = '';
@@ -60,10 +60,31 @@ function runSimulation() {
   
       // Append table to output div
       outputDiv.appendChild(table);
+  
+      // Display the final score and high score
+      const finalScore = parseFloat(lines[lines.length - 1].split(',').pop().trim());
+      const scoreDiv = document.createElement('div');
+      scoreDiv.innerHTML = `
+        <p>Final Score: ${finalScore.toFixed(2)}</p>
+        <p>High Score: ${highScore.toFixed(2)}</p>
+      `;
+      outputDiv.appendChild(scoreDiv);
+
+      // Find the scoreSection and append the scoreDiv to it
+const scoreSection = document.getElementById('scoreSection');
+if (scoreSection) {
+  // Clear any previous scores
+  scoreSection.innerHTML = '';
+
+  // Add the new scores
+  scoreSection.appendChild(scoreDiv);
+} else {
+  console.error('No element with id "scoreSection" found.');
+}
     })
     .catch(error => {
-      console.error('Error running simulation:', error);
-      alert('Error running simulation. Please check the console for details.');
+      //console.error('Error running simulation:', error);
+      //alert('Error running simulation. Please check the console for details.');
     });
   }
   

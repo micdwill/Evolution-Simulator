@@ -4,30 +4,30 @@ body {
     margin: 20px;
     padding: 0;
     background-color: #8fa4e1;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
     color: #131212;
-  }
-  
-  #simulationForm {
+}
+
+#simulationForm {
     max-width: 600px;
     margin: 0 auto;
     background-color: #9ad2c0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  label {
+}
+
+label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
     color: #555;
-  }
-  
-  input[type="number"], textarea {
+}
+
+input[type="number"], textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -35,9 +35,9 @@ body {
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
-  }
-  
-  button {
+}
+
+button {
     background-color: #28ac2d;
     color: white;
     padding: 12px 20px;
@@ -46,13 +46,13 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
-  
-  #simulationOutput {
+}
+
+#simulationOutput {
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #852323;
@@ -60,26 +60,43 @@ body {
     background-color: #f9f9f9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     color: #333;
-  }
-  
-  .simulationTable {
+}
+
+.simulationTable {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-  }
-  
-  .simulationTable th, .simulationTable td {
+}
+
+.simulationTable th, .simulationTable td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
-  }
-  
-  .simulationTable th {
+}
+
+.simulationTable th {
     background-color: #f2f2f2;
     color: #333;
-  }
-  
-  .simulationTable td {
+}
+
+.simulationTable td {
     background-color: #fff;
-  }
-  
+}
+
+.scoreDiv {
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #eab57c; /* Light yellow background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+}
+
+#scoreSection p {
+    margin: 10px 0;
+    font-size: 1.0em;
+    font-weight: bold;
+    color: #459c75;
+}

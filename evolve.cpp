@@ -64,6 +64,9 @@ private:
     vector<Guy> guys;
     vector<Tree> trees;
     vector<PopulationData> populationHistory;
+    double score;
+    int numGuys;
+    int numTrees;
     size_t killCount = 0;
     int generations = 0;
     size_t genCount = 0;
@@ -238,11 +241,14 @@ private:
 
         if (totAlive == 0) {
             cout << "Population deceased\n";
+            score = 0;
             outputPopulationData("out.csv");
             exit(0);
         }
 
         cout << '\n';
+
+        score = totAlive / (numGuys * numTrees * genCount);
     }
 
     // Function to output population data to a CSV file
@@ -263,6 +269,8 @@ private:
                        << data.preyPopulation << ", " << data.predatorPopulation << "\n";
         }
 
+        outputFile << "Final score, " << score;
+
         outputFile.close();
         cout << "Population data has been written to " << filename << endl;
     }
@@ -272,7 +280,7 @@ public:
 
     // Take input
     void readInput() {
-        int numGuys;
+        
         cin >> numGuys;
         for (int i = 0; i < numGuys; i++) {
             Guy guy;
@@ -281,7 +289,6 @@ public:
             guys.push_back(guy);
         }
 
-        int numTrees;
         cin >> numTrees;
         for (int i = 0; i < numTrees; i++) {
             Tree tree;

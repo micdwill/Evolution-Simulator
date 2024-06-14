@@ -17,6 +17,8 @@ app.use(cors());
 // Serve static files (e.g., index.html, script.js)
 app.use(express.static('public'));
 
+let highScore = 0; // Variable to store the high score
+
 // Example route to handle simulation request
 app.post('/runSimulation', (req, res) => {
   console.log('Received a request to /runSimulation');
@@ -49,8 +51,8 @@ app.post('/runSimulation', (req, res) => {
     // Execute simulation process
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.error(`Error executing simulation: ${error}`);
-        return res.status(500).send('Simulation failed');
+        //console.error(`Error executing simulation: ${error}`);
+        //return res.status(500).send('Simulation failed');
       }
 
       console.log('Simulation standard output:', stdout);
@@ -66,7 +68,21 @@ app.post('/runSimulation', (req, res) => {
           return res.status(500).send('Simulation result not found');
         }
         console.log('Simulation results:', data);
-        res.send(data); // Send simulation results back to client
+
+        // Extract the final score from the last line of out.csv
+        const lines = data.trim().split('\n');
+        const finalScoreLine = lines[lines.length - 1];
+        const finalScore = parseFloat(finalScoreLine.split(',').pop().trim());
+        console.log('Final Score:', finalScore);
+
+        // Update high score if the final score is higher
+        if (finalScore > highScore) {
+          highScore = finalScore;
+          console.log('New high score:', highScore);
+        }
+
+        // Send both the simulation data and the high score back to the client
+        res.json({ data, highScore }); // Sending JSON with simulation results and high score
       });
     });
   });

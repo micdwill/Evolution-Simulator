@@ -69,7 +69,6 @@ Compile `evolve.cpp` to generate the `evolve` executable using your preferred C+
 g++ -o evolve evolve.cpp -std=c++17
 ```
 
-
 ### Running the Simulation
 
 1. **Start the Node.js server**:
@@ -89,14 +88,6 @@ Open a web browser and navigate to `http://localhost:4454` (or the port specifie
 - **Fill out the form**: Enter the number of guys, guys' data, number of trees, trees' data, and number of generations.
 - **Run Simulation**: Click on the "Run Simulation" button to initiate the simulation.
 - **View Results**: Once the simulation completes, the results (in CSV format) will be displayed on the interface.
-
-## File Structure
-
-- **evolve.cpp**: Contains the main C++ code for simulating the evolution.
-- **server.js**: Node.js server script that handles incoming requests, executes the C++ simulation, and serves the frontend files.
-- **public/index.html**: HTML file providing the user interface for inputting simulation parameters.
-- **public/script.js**: JavaScript file handling user input validation, sending data to the server, and displaying results.
-- **graphGens.py**: Python script to generate a stacked line graph of population dynamics over generations.
 
 ## Example Usage
 
