@@ -185,6 +185,7 @@ private:
     // For printing stats after each generation
     void stats() {
         genCount++;
+        totAlive = 0;
         double avSize = 0;
         double avSpeed = 0;
         double avFood = 0;
