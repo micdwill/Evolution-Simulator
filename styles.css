@@ -100,3 +100,30 @@ button:hover {
     font-weight: bold;
     color: #459c75;
 }
+
+.graphContainer {
+    margin: 20px auto; /* Centers the container horizontally */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f0f8ff; /* AliceBlue background for a light touch */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    display: block; /* Make the container a block element */
+    width: 80%; /* Specify a width for better centering control */
+    max-width: 600px; /* Ensure it doesn't grow too wide */
+    text-align: center; /* Centers the content inside the container */
+}
+
+.graphImage {
+    max-width: 80%; /* Reduced size for a smaller box */
+    height: auto;
+    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #4b8ebf; /* Border color matching the overall theme */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for the image itself */
+}
+
+/* Optional: Make sure the image resizes correctly in smaller screens */
+@media (max-width: 768px) {
+    .graphImage {
+        max-width: 80%; /* Adjust for smaller screens */
+    }
+}

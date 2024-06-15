@@ -315,7 +315,7 @@ public:
                 }
             }
 
-            // Guys try to eat until their full
+            // Guys try to eat until they are full
             while (!guysNearTree.empty() && tree.fruitNum > 0) {
                 eat(*guysNearTree.top(), tree);
                 if (guysNearTree.top()->foodNeeded <= 0) {
