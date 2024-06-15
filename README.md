@@ -87,7 +87,7 @@ Open a web browser and navigate to `http://localhost:4454` (or the port specifie
 
 - **Fill out the form**: Enter the number of guys, guys' data, number of trees, trees' data, and number of generations.
 - **Run Simulation**: Click on the "Run Simulation" button to initiate the simulation.
-- **View Results**: Once the simulation completes, the results (in CSV format) will be displayed on the interface.
+- **View Results**: Once the simulation completes, the results in both csv and graphical format will be displayed on the interface.
 
 ## Example Usage
 
@@ -99,7 +99,6 @@ To test the simulation:
 ```markdown
 ./evolve < input.txt
 ```
-
 3. Generate the population graph using `graphGens.py`:
 
 ```markdown

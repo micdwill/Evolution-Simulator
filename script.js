@@ -4,6 +4,47 @@ function runSimulation() {
     const numTrees = document.getElementById('numTrees').value;
     const treesData = document.getElementById('treesData').value;
     const numGenerations = document.getElementById('numGenerations').value;
+
+    // Convert input values to numbers
+    const numGuysInt = parseInt(numGuys);
+    const numTreesInt = parseInt(numTrees);
+    const numGenerationsInt = parseInt(numGenerations);
+
+    // Split data inputs into arrays
+    const guysDataArray = guysData.trim().split(/\s+/); // Split by any whitespace
+    const treesDataArray = treesData.trim().split(/\s+/); // Split by any whitespace
+
+    // Validate inputs before sending to the server
+    if (!Number.isInteger(numGuysInt) || numGuysInt <= 0) {
+        alert('Number of Guys must be a positive integer.');
+        return;
+    }
+
+    if (!Number.isInteger(numTreesInt) || numTreesInt <= 0) {
+        alert('Number of Trees must be a positive integer.');
+        return;
+    }
+
+    if (!Number.isInteger(numGenerationsInt) || numGenerationsInt <= 0) {
+        alert('Number of Generations must be a positive integer.');
+        return;
+    }
+
+    if (guysDataArray.length !== numGuysInt * 5) {
+        alert(`Guys' Data must contain exactly ${numGuysInt * 5} numerical values.`);
+        return;
+    }
+
+    if (treesDataArray.length !== numTreesInt * 3) {
+        alert(`Trees' Data must contain exactly ${numTreesInt * 3} numerical values.`);
+        return;
+    }
+
+    // Ensure all values in guysData and treesData are numbers
+    if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
+        alert('Guys data and Trees data must only contain numerical values.');
+        return;
+    }
   
     fetch('http://localhost:4456/runSimulation', {
       method: 'POST',

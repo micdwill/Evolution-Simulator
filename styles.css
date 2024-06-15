@@ -3,18 +3,32 @@ body {
     line-height: 1.6;
     margin: 20px;
     padding: 0;
-    background-color: #8fa4e1;
+    background: radial-gradient(circle at top left, #e66868, #d6763f, #e84fa6);
 }
 
-h1 {
-    text-align: center;
-    color: #131212;
+/* New styles for the title */
+.pageTitle {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5em; /* Larger font size */
+    font-weight: bold;
+    color: #ffffff; /* White text color */
+    background: linear-gradient(to right, #4b8ebf, #81d4fa); /* Gradient background */
+    text-align: center; /* Center align the text */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+    margin: 30px auto; /* Space below the title */
+    max-width: 800px; /* Limit the width of the title box */
+    width: 90%; /* Make the box responsive, 90% of the parent width but not more than max-width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow for better readability */
 }
+
+
 
 #simulationForm {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #9ad2c0;
+    background: linear-gradient(to right, #5add5e, #76e8a7);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,12 +67,14 @@ button:hover {
 }
 
 #simulationOutput {
-    margin-top: 20px;
+    margin: 20px auto;
     padding: 20px;
     border: 1px solid #852323;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #74ebd1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px; 
+    width: 80%; 
     color: #333;
 }
 
@@ -75,12 +91,12 @@ button:hover {
 }
 
 .simulationTable th {
-    background-color: #f2f2f2;
+    background-color: #e0b234;
     color: #333;
 }
 
 .simulationTable td {
-    background-color: #fff;
+    background-color: #ef8645;
 }
 
 .scoreDiv {
@@ -89,8 +105,10 @@ button:hover {
     text-align: center;
     padding: 15px;
     border-radius: 8px;
-    background-color: #eab57c; /* Light yellow background */
+    background-color: #cfaafc; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    width: 80%; 
     font-size: 1.2em;
 }
 
@@ -98,14 +116,14 @@ button:hover {
     margin: 10px 0;
     font-size: 1.0em;
     font-weight: bold;
-    color: #459c75;
+    color: #006815;
 }
 
 .graphContainer {
     margin: 20px auto; /* Centers the container horizontally */
     padding: 15px;
     border-radius: 10px;
-    background-color: #f0f8ff; /* AliceBlue background for a light touch */
+    background-color: #83bff3; /* AliceBlue background for a light touch */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
     display: block; /* Make the container a block element */
     width: 80%; /* Specify a width for better centering control */

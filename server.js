@@ -32,6 +32,33 @@ app.post('/runSimulation', (req, res) => {
     return res.status(400).send('Missing required fields');
   }
 
+  // Validate input
+    // Check if the number of guys, trees, and generations are integers
+    if (!Number.isInteger(Number(numGuys)) || !Number.isInteger(Number(numTrees)) || !Number.isInteger(Number(numGenerations))) {
+        console.log('The number of guys, trees, and generations must be integers.');
+        return res.status(400).send('The number of guys, trees, and generations must be integers.');
+    }
+
+    // Check if guysData and treesData have the correct number of numerical values
+    const guysDataArray = guysData.trim().split(/\s+/); // Split by any whitespace
+    const treesDataArray = treesData.trim().split(/\s+/); // Split by any whitespace
+
+    if (guysDataArray.length !== numGuys * 5) {
+        console.log(`Guys data must contain exactly ${numGuys * 5} numerical values.`);
+        return res.status(400).send(`Guys data must contain exactly ${numGuys * 5} numerical values.`);
+    }
+
+    if (treesDataArray.length !== numTrees * 3) {
+        console.log(`Trees data must contain exactly ${numTrees * 3} numerical values.`);
+        return res.status(400).send(`Trees data must contain exactly ${numTrees * 3} numerical values.`);
+    }
+
+    // Ensure all values in guysData and treesData are numbers
+    if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
+        console.log('Guys data and trees data must only contain numbers.');
+        return res.status(400).send('Guys data and trees data must only contain numbers.');
+    }
+
   // Write input data to input.txt
   const inputFilePath = path.join(__dirname, 'input.txt');
   const inputContent = `${numGuys}\n${guysData}\n${numTrees}\n${treesData}\n${numGenerations}`;
