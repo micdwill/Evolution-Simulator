@@ -123,8 +123,9 @@ private:
         for (size_t i = 0; i < sizeTree; i++) {
             // If tree has fruit left it remains
             if (trees[i].fruitNum > 0) {
-                // If tree has 3+ fruit left, chance of creating another tree
-                if (trees[i].fruitNum > 2) {
+                // If tree has 3+ fruit left and not too many trees,
+                // chance of creating another tree
+                if (trees[i].fruitNum > 2 && trees.size() < 500) {
                     addTree(trees[i]);
                 }
                 trees[i].fruitNum = trees[i].fruitHad;
@@ -249,9 +250,6 @@ private:
         }
 
         cout << '\n';
-
-        // Final score calculation
-        score = 1000 * (totAlive / (sqrt(numGuys * genCount) * foodIni));
     }
 
     // Function to output population data to a CSV file
@@ -353,7 +351,7 @@ public:
             cout << "Generation " << i + 1 << ":\n";
             doGen();
         }
-        score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * genCount));
+        score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * pow(genCount, 1/3)));
         cout << "Final Score: " << score << "\n\n";
         outputPopulationData("out.csv");
     }
