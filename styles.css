@@ -12,7 +12,7 @@ body {
     font-size: 2.5em; /* Larger font size */
     font-weight: bold;
     color: #ffffff; /* White text color */
-    background: linear-gradient(to right, #4b8ebf, #81d4fa); /* Gradient background */
+    background: linear-gradient(to top, #83bff3, #546fd1); /* Gradient background */
     text-align: center; /* Center align the text */
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
@@ -71,7 +71,7 @@ button:hover {
     padding: 20px;
     border: 1px solid #852323;
     border-radius: 8px;
-    background: linear-gradient(to right, #74eba0, #65f47d);
+    background: linear-gradient(to top, #5add5e, #76e8a7);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 900px; 
     width: 80%; 
@@ -91,12 +91,12 @@ button:hover {
 }
 
 .simulationTable th {
-    background-color: #c8fc6e;
+    background: linear-gradient(to right, #cfaafc, #b63fd0); 
     color: #333;
 }
 
 .simulationTable td {
-    background-color: #86ed5d;
+    background: linear-gradient(to right, #5daaed, #5888f8);
 }
 
 .scoreDiv {
@@ -114,16 +114,17 @@ button:hover {
 
 #scoreSection p {
     margin: 10px 0;
-    font-size: 1.0em;
+    font-size: 1.2em; /* Larger font size */
     font-weight: bold;
-    color: #006815;
+    color: #006815; /* Dark green text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
 }
 
 .graphContainer {
     margin: 20px auto; /* Centers the container horizontally */
     padding: 15px;
     border-radius: 10px;
-    background: linear-gradient(to right, #83bff3, #546fd1);
+    background: linear-gradient(to top, #83bff3, #546fd1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
     display: block; /* Make the container a block element */
     width: 90%; /* Specify a width for better centering control */
