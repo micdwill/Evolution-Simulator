@@ -251,7 +251,7 @@ private:
         cout << '\n';
 
         // Final score calculation
-        score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * genCount));
+        score = 1000 * (totAlive / (sqrt(numGuys * genCount) * foodIni));
     }
 
     // Function to output population data to a CSV file
