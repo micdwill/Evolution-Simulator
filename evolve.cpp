@@ -72,6 +72,8 @@ private:
     int generations = 0;
     int foodIni = 0;
     size_t genCount = 0;
+    bool isQuiet = false;
+
 
     // To generate a normal distribution
     double generateNormal(double mean, double stddev) {
@@ -137,13 +139,15 @@ private:
                 trees[i].fruitNum = trees[i].fruitHad;
             }
         }
+        //trees.erase(remove_if(trees.begin(), trees.end(),
+        //[](const Tree& tree) { return tree.fruitNum == 0; }), trees.end());
     }
 
     // To add new tree offspring
     void addTree(Tree& tree) {
         double pred = static_cast<double>(rand()) / RAND_MAX;
         if (pred < 0.1) {
-            double newLoc = generateNormal(tree.location, 0.1);
+            double newLoc = generateNormal(tree.location, 0.5);
             double newHeight = generateNormal(tree.height, 1);
             double newFrui = generateNormal(tree.fruitHad, 0.5);
             int newFruit = floor(newFrui);
@@ -187,12 +191,12 @@ private:
     void stats() {
         genCount++;
         totAlive = 0;
+        int predAmount = 0;
+        int preyAmount = 0;
         double avSize = 0;
         double avSpeed = 0;
         double avFood = 0;
         int fruitNum = 0;
-        int predAmount = 0;
-        int preyAmount = 0;
         double avLoc = 0;
         double treeLoc = 0;
         double treeHeight;
@@ -201,43 +205,50 @@ private:
             totAlive++;
             if (guys[i].predator) predAmount++;
             else preyAmount++;
-            avSize += guys[i].size;
-            avSpeed += guys[i].speed;
-            avFood += guys[i].foodToNeed;
-            avLoc += guys[i].location;
+            if (!isQuiet) {
+                avSize += guys[i].size;
+                avSpeed += guys[i].speed;
+                avFood += guys[i].foodToNeed;
+                avLoc += guys[i].location;
+            }
         }
+        if (!isQuiet) {
+            for (size_t i = 0; i < trees.size(); i++) {
+                fruitNum += trees[i].fruitHad;
+                treeLoc += trees[i].location;
+                treeHeight += trees[i].height;
+            }
+        
 
-        for (size_t i = 0; i < trees.size(); i++) {
-            fruitNum += trees[i].fruitHad;
-            treeLoc += trees[i].location;
-            treeHeight += trees[i].height;
+            if (trees.size() > 0) {
+                fruitNum /= trees.size();
+                treeLoc /= trees.size();
+                treeHeight /= trees.size();
+            }
+        
+
+            if (totAlive > 0) {
+                avSize /= totAlive;
+                avSpeed /= totAlive;
+                avFood /= totAlive;
+                avLoc /= totAlive;
+            }
+        
+
+        
+            cout << "Amount of Guys who survived: " << totAlive << '\n';
+            cout << "Amount of Predators who survived: " << predAmount << '\n';
+            cout << "Amount of Prey who survived: " << preyAmount << '\n';
+            cout << "Average size remaining: " << avSize << '\n';
+            cout << "Average speed remaining: " << avSpeed << '\n';
+            cout << "Average food needed remaining: " << avFood << '\n';
+            cout << "Average guy location remaining: " << avLoc << '\n';
+            cout << "Guys murdered: " << killCount << '\n';
+            cout << "Amount of trees remaining: " << trees.size() << '\n';
+            cout << "Average fruit per tree: " << fruitNum << '\n';
+            cout << "Average tree location remaining: " << treeLoc << '\n';
+            cout << "Average tree height remaining: " << treeHeight << '\n';
         }
-
-        if (trees.size() > 0) {
-            fruitNum /= trees.size();
-            treeLoc /= trees.size();
-            treeHeight /= trees.size();
-        }
-
-        if (totAlive > 0) {
-            avSize /= totAlive;
-            avSpeed /= totAlive;
-            avFood /= totAlive;
-            avLoc /= totAlive;
-        }
-
-        cout << "Amount of Guys who survived: " << totAlive << '\n';
-        cout << "Amount of Predators who survived: " << predAmount << '\n';
-        cout << "Amount of Prey who survived: " << preyAmount << '\n';
-        cout << "Average size remaining: " << avSize << '\n';
-        cout << "Average speed remaining: " << avSpeed << '\n';
-        cout << "Average food needed remaining: " << avFood << '\n';
-        cout << "Average guy location remaining: " << avLoc << '\n';
-        cout << "Guys murdered: " << killCount << '\n';
-        cout << "Amount of trees remaining: " << trees.size() << '\n';
-        cout << "Average fruit per tree: " << fruitNum << '\n';
-        cout << "Average tree location remaining: " << treeLoc << '\n';
-        cout << "Average tree height remaining: " << treeHeight << '\n';
 
         collectPopulationData(genCount, static_cast<size_t>(totAlive),
         static_cast<size_t>(preyAmount), static_cast<size_t>(predAmount));
@@ -249,7 +260,7 @@ private:
             exit(0);
         }
 
-        cout << '\n';
+        if (!isQuiet) cout << '\n';
     }
 
     // Function to output population data to a CSV file
@@ -278,6 +289,25 @@ private:
 
 
 public:
+
+    void readArgs(int argc, char** argv) {
+        int option_index = 0, option = 0;
+    
+        // Don't display getopt error messages about options
+        opterr = false;
+
+        struct option longOpts[] = {{ "quiet", no_argument, nullptr, 'q' }};
+
+        while 
+        ((option =
+        getopt_long(argc, argv, "q", longOpts, &option_index)) != -1) {
+            switch (option) {
+                case 'q':
+                    isQuiet = true;
+                    return;
+            }
+        }
+    }
 
     // Take input
     void readInput() {
@@ -348,7 +378,7 @@ public:
     void doSim() {
         cin >> generations;
         for (size_t i = 0; i < generations; i++) {
-            cout << "Generation " << i + 1 << ":\n";
+            if (!isQuiet) cout << "Generation " << i + 1 << ":\n";
             doGen();
         }
         score = 1000 * (totAlive / (sqrt(numGuys) * foodIni * pow(genCount, 1/3)));
@@ -364,9 +394,11 @@ public:
 
 };
 
-int main() {
+int main(int argc, char** argv) {
 
     Simulation sim;
+
+    sim.readArgs(argc, argv);
 
     sim.readInput();
 
