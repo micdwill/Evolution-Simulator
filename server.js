@@ -2,7 +2,7 @@ const express = require('express');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const cors = require('cors'); // If using CORS middleware
+const cors = require('cors'); 
 const app = express();
 const port = 4456;
 
@@ -41,7 +41,7 @@ app.post('/runSimulation', (req, res) => {
 
     // Check if guysData and treesData have the correct number of numerical values
     const guysDataArray = guysData.trim().split(/\s+/); // Split by any whitespace
-    const treesDataArray = treesData.trim().split(/\s+/); // Split by any whitespace
+    const treesDataArray = treesData.trim().split(/\s+/); 
 
     if (guysDataArray.length !== numGuys * 5) {
         console.log(`Guys data must contain exactly ${numGuys * 5} numerical values.`);
@@ -59,28 +59,28 @@ app.post('/runSimulation', (req, res) => {
         return res.status(400).send('Guys data and trees data must only contain numbers.');
     }
 
-  // Write input data to input.txt
-  const inputFilePath = path.join(__dirname, 'input.txt');
-  const inputContent = `${numGuys}\n${guysData}\n${numTrees}\n${treesData}\n${numGenerations}`;
+    // Write input data to input.txt
+    const inputFilePath = path.join(__dirname, 'input.txt');
+    const inputContent = `${numGuys}\n${guysData}\n${numTrees}\n${treesData}\n${numGenerations}`;
   
-  fs.writeFile(inputFilePath, inputContent, (err) => {
-    if (err) {
-      console.error(`Error writing input file: ${err}`);
-      return res.status(500).send('Error preparing simulation input');
-    }
+    fs.writeFile(inputFilePath, inputContent, (err) => {
+        if (err) {
+          console.error(`Error writing input file: ${err}`);
+         return res.status(500).send('Error preparing simulation input');
+        }
 
-    console.log('Input file written successfully:', inputFilePath);
+        console.log('Input file written successfully:', inputFilePath);
 
-    // Construct command to execute simulation
-    const command = `./evolve -q < ${inputFilePath}`;
-    console.log('Executing command:', command);
+        // Construct command to execute simulation
+        const command = `./evolve -q < ${inputFilePath}`;
+        console.log('Executing command:', command);
 
-    // Execute simulation process
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        //console.error(`Error executing simulation: ${error}`);
-        //return res.status(500).send('Simulation failed');
-      }
+        // Execute simulation process
+        exec(command, (error, stdout, stderr) => {
+        if (error) {
+            //console.error(`Error executing simulation: ${error}`);
+            //return res.status(500).send('Simulation failed');
+        }
 
       console.log('Simulation standard output:', stdout);
       console.error('Simulation standard error:', stderr);

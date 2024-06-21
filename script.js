@@ -1,3 +1,4 @@
+
 function runSimulation() {
     const numGuys = document.getElementById('numGuys').value;
     const guysData = document.getElementById('guysData').value;
@@ -112,21 +113,21 @@ function runSimulation() {
       outputDiv.appendChild(scoreDiv);
 
       // Update the graph image with cache busting
-const graphImg = document.getElementById('graphImg');
-const timestamp = new Date().getTime(); // Use the current timestamp
-graphImg.src = `popDynamics.png?t=${timestamp}`;
+      const graphImg = document.getElementById('graphImg');
+      const timestamp = new Date().getTime(); // Use the current timestamp
+      graphImg.src = `popDynamics.png?t=${timestamp}`;
 
       // Find the scoreSection and append the scoreDiv to it
-const scoreSection = document.getElementById('scoreSection');
-if (scoreSection) {
-  // Clear any previous scores
-  scoreSection.innerHTML = '';
+      const scoreSection = document.getElementById('scoreSection');
+      if (scoreSection) {
+      // Clear any previous scores
+      scoreSection.innerHTML = '';
 
-  // Add the new scores
-  scoreSection.appendChild(scoreDiv);
-} else {
-  console.error('No element with id "scoreSection" found.');
-}
+      // Add the new scores
+      scoreSection.appendChild(scoreDiv);
+      } else {
+        console.error('No element with id "scoreSection" found.');
+      }
     })
     .catch(error => {
       //console.error('Error running simulation:', error);
