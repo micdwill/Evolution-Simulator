@@ -13,23 +13,23 @@
       </body>
       </html>
     <body>
-  <div id="simulationForm">
-    <label for="numGuys">Number of Guys:</label><br>
-    <input type="number" id="numGuys" name="numGuys" min="1" required><br><br>
+  <div id="simulationForm" class="centered-form">
+    <label for="numGuys" class="label">Number of Creatures:</label>
+        <input type="number" id="numGuys" name="numGuys" min="1" required class="text-box"><br>
 
-    <label for="guysData">Guys' Data (Size, Speed, Appetite, Location, 0 - Prey and 1 - Predator):</label><br>
-    <textarea id="guysData" name="guysData" rows="10" cols="50" required></textarea><br><br>
+        <label for="guysData" class="label">Creature Data <br> (Size, Speed, Appetite, Location, 0 - Prey and 1 - Predator):</label>
+        <textarea id="guysData" name="guysData" rows="5" cols="10" required class="text-box text-area"></textarea><br>
 
-    <label for="numTrees">Number of Trees:</label><br>
-    <input type="number" id="numTrees" name="numTrees" min="1" required><br><br>
+        <label for="numTrees" class="label">Number of Trees:</label>
+        <input type="number" id="numTrees" name="numTrees" min="1" required class="text-box"><br>
 
-    <label for="treesData">Trees' Data (Height, Location, Fruit Number):</label><br>
-    <textarea id="treesData" name="treesData" rows="10" cols="50" required></textarea><br><br>
+        <label for="treesData" class="label">Tree Data <br> (Height, Location, Fruit Number):</label>
+        <textarea id="treesData" name="treesData" rows="5" cols="10" required class="text-box text-area"></textarea><br>
 
-    <label for="numGenerations">Number of Generations:</label><br>
-    <input type="number" id="numGenerations" name="numGenerations" min="1" required><br><br>
+        <label for="numGenerations" class="label">Number of Generations:</label>
+        <input type="number" id="numGenerations" name="numGenerations" min="1" required class="text-box"><br>
 
-    <button onclick="runSimulation()">Run Simulation</button>
+        <button onclick="runSimulation()">Run Simulation</button>
   </div>
 
   <!-- Section for displaying final score and high score -->
