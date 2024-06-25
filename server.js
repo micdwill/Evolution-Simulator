@@ -17,6 +17,10 @@ app.use(cors());
 // Serve static files (e.g., index.html, script.js)
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
 let highScore = 0; // Variable to store the high score
 
 // Example route to handle simulation request
