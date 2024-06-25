@@ -1,26 +1,32 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    margin: 20px;
-    padding: 0;
-    background: radial-gradient(circle at top left, #43573f, #525471, #426060);
+    background-image: url('bgImage.png'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+    background-position: center; /* Centers the image */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Optional: Font family */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    min-height: 100vh; /* Ensures the body is at least as tall as the viewport */
 }
+
 
 /* New styles for the title */
 .pageTitle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.5em; /* Larger font size */
     font-weight: bold;
-    color: #ffffff; /* White text color */
-    background: linear-gradient(to top, #83bff3, #546fd1); /* Gradient background */
+    color: #273027; 
+    background: linear-gradient(to top, #20394f, #898c97); /* Gradient background */
     text-align: center; /* Center align the text */
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
     margin: 30px auto; /* Space below the title */
     max-width: 800px; /* Limit the width of the title box */
     width: 90%; /* Make the box responsive, 90% of the parent width but not more than max-width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle text shadow for better readability */
+    box-shadow: 0 4px 8px rgba(255, 254, 254, 0.4); /* Soft shadow for depth */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow for better readability */
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 
@@ -28,10 +34,11 @@ body {
 #simulationForm {
     max-width: 600px;
     margin: 0 auto;
-    background: linear-gradient(to right, #5add5e, #76e8a7);
+    background: linear-gradient(to right, #42664d, #9ebeac);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    animation: floatAnimation 4s ease-in-out infinite;
 }
 
 label {
@@ -52,30 +59,30 @@ input[type="number"], textarea {
 }
 
 button {
-    background-color: #28ac2d;
+    background-color: #3d35e7;
     color: white;
     padding: 12px 20px;
-    border: none;
+    border: 1px solid #852323;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.5s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #15204a;
 }
 
 #simulationOutput {
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #852323;
     border-radius: 8px;
-    background: linear-gradient(to top, #5add5e, #76e8a7);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to top, #253f2d, #90b19e);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     max-width: 900px; 
     width: 80%; 
     color: #333;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .simulationTable {
@@ -91,12 +98,12 @@ button:hover {
 }
 
 .simulationTable th {
-    background: linear-gradient(to right, #cfaafc, #b63fd0); 
+    background: linear-gradient(to right, #d0c1e1, #4e3254); 
     color: #333;
 }
 
 .simulationTable td {
-    background: linear-gradient(to right, #5daaed, #5888f8);
+    background: linear-gradient(to right, #a3c3df, #35415d);
 }
 
 .scoreDiv {
@@ -105,8 +112,8 @@ button:hover {
     text-align: center;
     padding: 15px;
     border-radius: 8px;
-    background: linear-gradient(to right, #cfaafc, #b63fd0); 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right, #ad9cc1, #412f57); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     max-width: 400px; 
     width: 80%; 
     font-size: 1.2em;
@@ -116,20 +123,22 @@ button:hover {
     margin: 10px 0;
     font-size: 1.2em; /* Larger font size */
     font-weight: bold;
-    color: #006815; /* Dark green text color */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /
+    color: #729078; /* Dark green text color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    animation: floatAnimation 4s ease-in-out infinite;
 }
 
 .graphContainer {
     margin: 20px auto; /* Centers the container horizontally */
     padding: 15px;
     border-radius: 10px;
-    background: linear-gradient(to top, #83bff3, #546fd1);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    background: linear-gradient(to right, #8ea2b4, #2e3754);;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Slightly darker shadow */
     display: block; /* Make the container a block element */
     width: 90%; /* Specify a width for better centering control */
     max-width: 750px; /* Ensure it doesn't grow too wide */
     text-align: center; /* Centers the content inside the container */
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .graphImage {
@@ -146,3 +155,69 @@ button:hover {
         max-width: 80%; /* Adjust for smaller screens */
     }
 }
+
+.centered-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically */
+    min-height: 100vh; /* Full height of the viewport */
+    text-align: center; /* Center align the text inside */
+    padding: 20px; /* Padding around the container */
+}
+
+/* General styles for text input boxes */
+.text-box {
+    font-size: 1.3em; /* Adjust the font size for better readability */
+    color: #4a2a61; /* Text color inside the text box */
+    background-color: #a2beef; /* Background color of the text box */
+    border: 2px solid #ffffff; /* Border color */
+    padding: 10px; /* Padding inside the text box */
+    border-radius: 8px; /* Rounded corners */
+    width: 90%; /* Responsive width */
+    max-width: 550px; /* Max width to prevent it from being too large */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin-bottom: 20px; /* Space between text boxes */
+    outline: none; /* Remove the default outline */
+    transition: all 0.8s ease; /* Smooth transition for focus effect */
+}
+
+/* Change text box appearance on focus */
+.text-box:focus {
+    border-color: #5f75f0; /* Change border color on focus */
+    background-color: #000000; /* Change background color on focus */
+    box-shadow: 0 0 10px rgba(232, 47, 109, 0.5); /* Highlighted shadow on focus */
+    color: #cba8e4;
+}
+
+/* Additional styling for text areas */
+.text-area {
+    min-height: 150px; /* Ensure text areas have a decent height */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Styling for input labels */
+.label {
+    font-size: 1.2em; /* Larger font size for labels */
+    font-weight: bold;
+    color: #3e2147; /* Slightly lighter text color */
+    margin-bottom: 5px;
+    display: block; /* Ensure labels are block elements */
+    text-shadow: 2px 2px 5px rgba(1, 0, 1, 0.3); 
+    text-align: center;
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(3px); /* Move 10px to the right */
+        transform: translateY(3px)
+    }
+    100% {
+        transform: translateX(0); /* Move back to the starting position */
+        transform: translateY(0)
+    }
+}
+
