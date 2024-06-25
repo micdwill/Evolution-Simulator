@@ -14,11 +14,12 @@ app.use(express.json());
 // Use CORS middleware if needed
 app.use(cors());
 
-// Serve static files (e.g., index.html, script.js)
-app.use(express.static(__dirname + '/public'));
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
+// Route to serve the HTML file
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 let highScore = 0; // Variable to store the high score
