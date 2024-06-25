@@ -22,15 +22,18 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/', (req, res) => {
+// Route to serve the script.js file
+app.get('/script.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'script.js'));
 });
 
-app.get('/', (req, res) => {
+// Route to serve the evolve file (assuming it's a file with a specific extension)
+app.get('/evolve', (req, res) => {
   res.sendFile(path.join(__dirname, 'evolve'));
 });
 
-app.get('/', (req, res) => {
+// Route to serve the graphGens.py file (assuming it's a file with a specific extension)
+app.get('/graphGens.py', (req, res) => {
   res.sendFile(path.join(__dirname, 'graphGens.py'));
 });
 
