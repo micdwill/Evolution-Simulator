@@ -22,6 +22,18 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'script.js'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'evolve'));
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'graphGens.py'));
+});
+
 let highScore = 0; // Variable to store the high score
 
 // Example route to handle simulation request
