@@ -117,6 +117,7 @@ button:hover {
     max-width: 400px; 
     width: 80%; 
     font-size: 1.2em;
+    animation: floatAnimation 4s ease-in-out infinite;
 }
 
 #scoreSection p {
@@ -125,7 +126,6 @@ button:hover {
     font-weight: bold;
     color: #729078; /* Dark green text color */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
-    animation: floatAnimation 4s ease-in-out infinite;
 }
 
 .graphContainer {
