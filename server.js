@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 // Serve static files (e.g., index.html, script.js)
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
