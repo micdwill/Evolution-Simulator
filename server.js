@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors'); 
 const app = express();
-const port = 4456;
+const port = process.env.PORT || 4456;
 
 console.log('Server is starting...');
 
