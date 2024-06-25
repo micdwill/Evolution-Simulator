@@ -22,20 +22,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Route to serve the script.js file
-app.get('/script.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'script.js'));
-});
-
-// Route to serve the evolve file (assuming it's a file with a specific extension)
-app.get('/evolve', (req, res) => {
-  res.sendFile(path.join(__dirname, 'evolve'));
-});
-
-// Route to serve the graphGens.py file (assuming it's a file with a specific extension)
-app.get('/graphGens.py', (req, res) => {
-  res.sendFile(path.join(__dirname, 'graphGens.py'));
-});
 
 let highScore = 0; // Variable to store the high score
 
