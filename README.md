@@ -25,6 +25,14 @@ The project is implemented using C++ for the simulation backend, JavaScript (wit
 
 - **graphGens.py**: Python script that reads simulation results from `out.csv`, generates a stacked line graph using `matplotlib`, and visualizes the population dynamics of prey and predator species over generations.
 
+## Screenshots
+
+![User Interface](Screenshots/Top.png)
+
+![Scoring](Screenshots/Mid.png)
+
+![Results](Screenshots/Bottom.png)
+
 ## Features
 
 - **Natural Selection**: Guys compete for food (fruits from trees). Those who cannot meet their food requirements die off, while the survivors reproduce.
