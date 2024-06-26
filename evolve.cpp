@@ -199,7 +199,7 @@ private:
         int fruitNum = 0;
         double avLoc = 0;
         double treeLoc = 0;
-        double treeHeight;
+        double treeHeight = 0;
         for (size_t i = 0; i < guys.size(); i++) {
             if (!guys[i].alive) continue;
             totAlive++;
@@ -357,7 +357,6 @@ public:
         // Predators try to kill if not enough food
         for (size_t i = 0; i < guys.size(); i++) {
             if (guys[i].predator) {
-                double prob = static_cast<double>(rand()) / RAND_MAX;
             
                 if (!guys[i].alive) {
                     kill(i);
