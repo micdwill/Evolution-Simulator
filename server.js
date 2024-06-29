@@ -84,8 +84,8 @@ app.post('/runSimulation', (req, res) => {
         // Execute simulation process
         exec(command, (error, stdout, stderr) => {
         if (error) {
-            //console.error(`Error executing simulation: ${error}`);
-            //return res.status(500).send('Simulation failed');
+            console.error(`Error executing simulation: ${error}`);
+            return res.status(500).send('Simulation failed');
         }
 
       console.log('Simulation standard output:', stdout);
