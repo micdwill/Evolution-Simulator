@@ -72,7 +72,7 @@ app.post('/runSimulation', (req, res) => {
     fs.writeFile(inputFilePath, inputContent, (err) => {
         if (err) {
           console.error(`Error writing input file: ${err}`);
-         return res.status(500).send('Error preparing simulation input');
+         return res.status(500).send(`Error writing input file: ${err}`);
         }
 
         console.log('Input file written successfully:', inputFilePath);
@@ -80,7 +80,7 @@ app.post('/runSimulation', (req, res) => {
         fs.readFile('/app/input.txt', 'utf8', (err, data) => {
           if (err) {
             console.error(`Error reading input file: ${err}`);
-            return;
+            return res.status(500).send(`Error reading input file: ${err}`);
           }
 
         // Construct command to execute simulation
