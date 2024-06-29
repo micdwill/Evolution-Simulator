@@ -1,5 +1,5 @@
 body {
-    background-image: url('bgImage.png'); /* Path to your image */
+    background-image: url('bgImage.jpg'); /* Path to your image */
     background-size: cover; /* Ensures the image covers the entire background */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-attachment: fixed; /* Keeps the background fixed while scrolling */
@@ -11,13 +11,14 @@ body {
 }
 
 
+
 /* New styles for the title */
 .pageTitle {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.5em; /* Larger font size */
     font-weight: bold;
-    color: #111111; 
-    background: linear-gradient(to top, #20394f, #898c97); /* Gradient background */
+    color: #3aed73; 
+    background: linear-gradient(to top, #0c0c0c, #2b2b2b); /* Gradient background */
     text-align: center; /* Center align the text */
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
@@ -25,21 +26,46 @@ body {
     max-width: 800px; /* Limit the width of the title box */
     width: 90%; /* Make the box responsive, 90% of the parent width but not more than max-width */
     box-shadow: 0 4px 8px rgba(255, 254, 254, 0.4); /* Soft shadow for depth */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow for better readability */
+    text-shadow: 2px 2px 2px #106bda; /* Subtle text shadow for better readability */
     animation: floatAnimation 3s ease-in-out infinite;
 }
 
 
 
 #simulationForm {
+    width: 800px;
+    background: linear-gradient(#212121, #202020) padding-box,
+              linear-gradient(80deg, transparent 35%,#1cff77, #106bda) border-box;
+    border: 2px solid transparent;
+    padding: 32px 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background-size: 200% 100%;
+    animation: gradient 5s ease infinite;
+    
     max-width: 600px;
     margin: 0 auto;
-    background: linear-gradient(to right, #42664d, #9ebeac);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-    animation: floatAnimation 4s ease-in-out infinite;
 }
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
 label {
     display: block;
@@ -59,25 +85,48 @@ input[type="number"], textarea {
 }
 
 button {
-    background-color: #3d35e7;
-    color: white;
-    padding: 12px 20px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 0.8em 1.8em;
+    border: 2px solid #1cff77;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
     font-size: 16px;
-    transition: background-color 0.5s ease;
-}
-
-button:hover {
-    background-color: #15204a;
-}
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #106bda;
+   }
+   
+   button::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #1cff77;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   button:hover::before {
+    width: 105%;
+   }
+   
+   button:hover {
+    color: #111;
+   }
 
 #simulationOutput {
     margin: 20px auto;
     padding: 20px;
     border-radius: 8px;
-    background: linear-gradient(to top, #253f2d, #90b19e);
+    background: linear-gradient(#212121, #212121) padding-box,
+              linear-gradient(80deg, transparent 35%,#1cff77, #106bda) border-box;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     max-width: 900px; 
     width: 80%; 
@@ -98,12 +147,12 @@ button:hover {
 }
 
 .simulationTable th {
-    background: linear-gradient(to right, #d0c1e1, #4e3254); 
+    background: #106bda;
     color: #333;
 }
 
 .simulationTable td {
-    background: linear-gradient(to right, #a3c3df, #35415d);
+    background: #1cff77
 }
 
 .scoreDiv {
@@ -112,7 +161,7 @@ button:hover {
     text-align: center;
     padding: 15px;
     border-radius: 8px;
-    background: linear-gradient(to right, #ad9cc1, #412f57); 
+    background: linear-gradient(to top, #303030, #1b1b1b); 
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     max-width: 400px; 
     width: 80%; 
@@ -124,15 +173,15 @@ button:hover {
     margin: 10px 0;
     font-size: 1.2em; /* Larger font size */
     font-weight: bold;
-    color: linear-gradient(to right, #1f3a26, #7a9d8d);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+    color: #3aed73;
+    text-shadow: 1px 1px 2px rgba(37, 208, 255, 0.2); 
 }
 
 .graphContainer {
     margin: 20px auto; /* Centers the container horizontally */
     padding: 15px;
     border-radius: 10px;
-    background: linear-gradient(to right, #8ea2b4, #2e3754);;
+    background: linear-gradient(to right, #262626, #131313);;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Slightly darker shadow */
     display: block; /* Make the container a block element */
     width: 90%; /* Specify a width for better centering control */
@@ -169,9 +218,9 @@ button:hover {
 /* General styles for text input boxes */
 .text-box {
     font-size: 1.3em; /* Adjust the font size for better readability */
-    color: #4a2a61; /* Text color inside the text box */
-    background-color: #a2beef; /* Background color of the text box */
-    border: 2px solid #ffffff; /* Border color */
+    color: #3aed73; /* Text color inside the text box */
+    background-color: #3c3c3c; /* Background color of the text box */
+    border: 2px solid #646464; /* Border color */
     padding: 10px; /* Padding inside the text box */
     border-radius: 8px; /* Rounded corners */
     width: 90%; /* Responsive width */
@@ -184,10 +233,10 @@ button:hover {
 
 /* Change text box appearance on focus */
 .text-box:focus {
-    border-color: #5f75f0; /* Change border color on focus */
+    border-color: #1cff77; /* Change border color on focus */
     background-color: #000000; /* Change background color on focus */
     box-shadow: 0 0 10px rgba(232, 47, 109, 0.5); /* Highlighted shadow on focus */
-    color: #cba8e4;
+    color: #106bda;
 }
 
 /* Additional styling for text areas */
@@ -200,10 +249,10 @@ button:hover {
 .label {
     font-size: 1.2em; /* Larger font size for labels */
     font-weight: bold;
-    color: #3e2147; /* Slightly lighter text color */
+    color: #106bda; /* Slightly lighter text color */
+    text-shadow: 1px 1px 0.1px #1cff77;
     margin-bottom: 5px;
     display: block; /* Ensure labels are block elements */
-    text-shadow: 2px 2px 5px rgba(1, 0, 1, 0.3); 
     text-align: center;
 }
 

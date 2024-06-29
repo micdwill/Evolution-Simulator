@@ -6,14 +6,14 @@ from matplotlib.ticker import MaxNLocator
 population_data = pd.read_csv('out.csv')
 
 # Create the plot
-plt.figure(figsize=(12, 8), dpi=100)  # Increased size and resolution
+plt.figure(figsize=(12, 8), dpi=100, facecolor= '#848484')  # Increased size and resolution
 
 # Plot the Prey and Predator populations with enhanced colors and line widths
-plt.plot(population_data['Generation'], population_data[' Prey Population'], color='#1f77b4', linewidth=2.5, label='Prey')  # Blue
-plt.plot(population_data['Generation'], population_data[' Predator Population'], color='#d62728', linewidth=2.5, label='Predator')  # Red
+plt.plot(population_data['Generation'], population_data[' Prey Population'], color='#1cff77', linewidth=2.5, label='Prey')  
+plt.plot(population_data['Generation'], population_data[' Predator Population'], color='#106bda', linewidth=2.5, label='Predator')  
 
 # Fill the area between the Prey and Predator populations with a semi-transparent color
-plt.fill_between(population_data['Generation'], population_data[' Prey Population'], population_data[' Predator Population'], color='lightcoral', alpha=0.3)
+plt.fill_between(population_data['Generation'], population_data[' Prey Population'], population_data[' Predator Population'], color='#2b2b2b', alpha=0.3)
 
 # Set labels and title with larger font sizes for better readability
 plt.xlabel('Generation', fontsize=14)
@@ -25,7 +25,7 @@ plt.legend(loc='upper right', fontsize=12, frameon=True, shadow=True, borderpad=
 
 # Remove the grid lines and add a light background color
 plt.grid(False)
-plt.gca().set_facecolor('black')
+plt.gca().set_facecolor('#4a4a4a')
 
 # Set x-axis to have nice buckets and ensure only integer ticks
 plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
