@@ -19,7 +19,7 @@ function runSimulation() {
     if (!Number.isInteger(numGuysInt) || numGuysInt <= 0) {
         alert('Number of Guys must be a positive integer.');
         return;
-    }//
+    }
 
     if (!Number.isInteger(numTreesInt) || numTreesInt <= 0) {
         alert('Number of Trees must be a positive integer.');
