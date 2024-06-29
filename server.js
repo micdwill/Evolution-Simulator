@@ -135,6 +135,7 @@ app.post('/runSimulation', (req, res) => {
   });
 });
 });
+});
 
 // Example: Start the server
 app.listen(port, () => {
