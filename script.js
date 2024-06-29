@@ -47,7 +47,8 @@ function runSimulation() {
         return;
     }
   
-    fetch('http://localhost:4456/runSimulation', {
+    //fetch('http://localhost:4456/runSimulation', {
+    fetch('https://fast-reaches-37987-bde7d538d636.herokuapp.com/runSimulation', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

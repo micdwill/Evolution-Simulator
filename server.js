@@ -11,12 +11,8 @@ console.log('Server is starting...');
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Use CORS with specific origin
-app.use(cors({
-  origin: 'https://fast-reaches-37987-bde7d538d636.herokuapp.com', // Replace with your Heroku app's URL
-  methods: 'GET,POST', // Adjust according to your needs
-  allowedHeaders: 'Content-Type,Authorization', // Adjust as necessary
-}));
+// Use CORS middleware if needed
+app.use(cors());
 
 // Serve static files
 app.use(express.static(path.join(__dirname)));
