@@ -94,8 +94,8 @@ app.post('/runSimulation', (req, res) => {
       // Generate the graph
       exec('python3 graphGens.py', (error, stdout, stderr) => {
         if (error) {
-          console.error(`Error generating graph: ${error}`);
-          return res.status(500).send('Graph generation failed');
+          //console.error(`Error generating graph: ${error}`);
+          //return res.status(500).send('Graph generation failed');
         }
 
       // Read simulation results from file (out.csv)
