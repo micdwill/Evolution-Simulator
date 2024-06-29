@@ -97,7 +97,7 @@ app.post('/runSimulation', (req, res) => {
           console.error(`Error generating graph: ${error}`);
           return res.status(500).send(`Error generating graph: ${error}`);
         }
-
+//
       // Read simulation results from file (out.csv)
       const resultFilePath = path.join(__dirname, 'out.csv');
       console.log('Looking for result file at:', resultFilePath);
