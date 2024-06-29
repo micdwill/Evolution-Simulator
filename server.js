@@ -77,13 +77,19 @@ app.post('/runSimulation', (req, res) => {
 
         console.log('Input file written successfully:', inputFilePath);
 
+        fs.readFile('/app/input.txt', 'utf8', (err, data) => {
+          if (err) {
+            console.error(`Error reading input file: ${err}`);
+            return;
+          }
+
         // Construct command to execute simulation
         const command = `./evolve < input.txt`;
         //const command = `./evolve < ${inputFilePath}`;
         console.log('Executing command:', command);
 
         // Execute simulation process
-        exec(command, (error, stdout, stderr) => {
+        exec('./evolve', [], { input: data }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing simulation: ${error}`);
             return res.status(500).send(`Error executing simulation: ${error}`);
