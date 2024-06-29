@@ -78,7 +78,8 @@ app.post('/runSimulation', (req, res) => {
         console.log('Input file written successfully:', inputFilePath);
 
         // Construct command to execute simulation
-        const command = `./evolve < ${inputFilePath}`;
+        const command = `./evolve < input.txt`;
+        //const command = `./evolve < ${inputFilePath}`;
         console.log('Executing command:', command);
 
         // Execute simulation process
