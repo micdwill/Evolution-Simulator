@@ -32,12 +32,12 @@ function runSimulation() {
     }
 
     if (guysDataArray.length !== numGuysInt * 5) {
-        alert(`Creatures Data must contain exactly stats for all creatures (${numGuysInt * 5} numerical values). Use spaces or new lines rather than commas.`);
+        alert(`Creatures Data must contain stats for all creatures (${numGuysInt * 5} numerical values). Use spaces or new lines rather than commas.`);
         return;
     }
 
     if (treesDataArray.length !== numTreesInt * 3) {
-        alert(`Trees' Data must contain stats for all trees (${numTreesInt * 3} numerical values). Use spaces or new lines rather than commas.`);
+        alert(`Trees Data must contain stats for all trees (${numTreesInt * 3} numerical values). Use spaces or new lines rather than commas.`);
         return;
     }
 
