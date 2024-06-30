@@ -60,7 +60,7 @@ app.post('/runSimulation', (req, res) => {
     }
 
     // Ensure all values in treesDataArray are numbers and are 1 or greater
-    if (!treesDataArray.every(value => !isNaN(value) && Number(value) >= 1)) {
+    if (!treesDataArray.every(value => !isNaN(value) && Math.abs(Number(value)) >= 1)) {
       console.log('Trees data must only contain numerical values of 1 or greater.');
       return res.status(400).send('Trees data must only contain numerical values of 1 or greater.');
     }

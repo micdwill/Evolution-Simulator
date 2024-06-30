@@ -42,7 +42,7 @@ function runSimulation() {
     }
 
     // Ensure all values in treesDataArray are numbers and are 1 or greater
-    if (!treesDataArray.every(value => !isNaN(value) && Number(value) >= 1)) {
+    if (!treesDataArray.every(value => !isNaN(value) && Math.abs(Number(value)) >= 1)) {
       alert('Trees Data must only contain numerical values of 1 or greater.');
       return;
     }
