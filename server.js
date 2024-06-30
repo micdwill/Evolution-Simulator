@@ -91,8 +91,8 @@ app.post('/runSimulation', (req, res) => {
         // Execute simulation process
         const child = exec('./evolve', { cwd: __dirname }, (error, stdout, stderr) => {
         if (error) {
-            console.error(`Error executing simulation: ${error}`);
-            return res.status(500).send(`Error executing simulation: ${error}`);
+            //console.error(`Error executing simulation: ${error}`);
+            //return res.status(500).send(`Error executing simulation: ${error}`);
         }
 
       console.log('Simulation standard output:', stdout);
