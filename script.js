@@ -41,6 +41,12 @@ function runSimulation() {
         return;
     }
 
+    // Ensure all values in treesDataArray are numbers and are 1 or greater
+    if (!treesDataArray.every(value => !isNaN(value) && Number(value) >= 1)) {
+      alert('Trees Data must only contain numerical values of 1 or greater.');
+      return;
+    }
+
     // Ensure all values in guysData and treesData are numbers
     if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
         alert('Creatures data and Trees data must only contain numerical values.');

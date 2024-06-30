@@ -59,6 +59,12 @@ app.post('/runSimulation', (req, res) => {
         return res.status(400).send(`Trees data must contain exactly ${numTrees * 3} numerical values.`);
     }
 
+    // Ensure all values in treesDataArray are numbers and are 1 or greater
+    if (!treesDataArray.every(value => !isNaN(value) && Number(value) >= 1)) {
+      console.log('Trees data must only contain numerical values of 1 or greater.');
+      return res.status(400).send('Trees data must only contain numerical values of 1 or greater.');
+    }
+
     // Ensure all values in guysData and treesData are numbers
     if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
         console.log('Creatures data and trees data must only contain numbers.');
