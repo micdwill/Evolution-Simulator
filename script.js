@@ -29,7 +29,7 @@ function runSimulation() {
     if (!Number.isInteger(numGenerationsInt) || numGenerationsInt <= 0) {
         alert('Number of Generations must be a positive integer.');
         return;
-    }//
+    }
 
     if (guysDataArray.length !== numGuysInt * 5) {
         alert(`Creatures Data must contain stats for all creatures (${numGuysInt * 5} numerical values). Use spaces or new lines rather than commas.`);
