@@ -17,7 +17,7 @@ function runSimulation() {
 
     // Validate inputs before sending to the server
     if (!Number.isInteger(numGuysInt) || numGuysInt <= 0) {
-        alert('Number of Guys must be a positive integer.');
+        alert('Number of Creatures must be a positive integer.');
         return;
     }//
 
@@ -32,18 +32,18 @@ function runSimulation() {
     }
 
     if (guysDataArray.length !== numGuysInt * 5) {
-        alert(`Guys' Data must contain exactly ${numGuysInt * 5} numerical values.`);
+        alert(`Creatures Data must contain exactly stats for all creatures (${numGuysInt * 5} numerical values). Use spaces or new lines rather than commas.`);
         return;
     }
 
     if (treesDataArray.length !== numTreesInt * 3) {
-        alert(`Trees' Data must contain exactly ${numTreesInt * 3} numerical values.`);
+        alert(`Trees' Data must contain stats for all trees (${numTreesInt * 3} numerical values). Use spaces or new lines rather than commas.`);
         return;
     }
 
     // Ensure all values in guysData and treesData are numbers
     if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
-        alert('Guys data and Trees data must only contain numerical values.');
+        alert('Creatures data and Trees data must only contain numerical values.');
         return;
     }
   
