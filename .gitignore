@@ -1,0 +1,23 @@
+# Node.js dependencies
+node_modules/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Compiled binaries
+evogame
+evolve
+
+
+# Data files and large input/output files
+big.txt
+new.txt
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore MacOS system files
+.DS_Store
+
