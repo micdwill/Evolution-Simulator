@@ -6,11 +6,6 @@ node_modules/
 *.tmp
 *.temp
 
-# Compiled binaries
-evogame
-evolve
-
-
 # Data files and large input/output files
 big.txt
 new.txt
