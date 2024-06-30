@@ -95,6 +95,9 @@ app.post('/runSimulation', (req, res) => {
             return res.status(500).send(`Error executing simulation: ${error}`);
         }
 
+        child.stdin.write(inputContent);
+  child.stdin.end();
+
       console.log('Simulation standard output:', stdout);
       console.error('Simulation standard error:', stderr);
 
