@@ -41,8 +41,8 @@ app.post('/runSimulation', (req, res) => {
   // Validate input
     // Check if the number of guys, trees, and generations are integers
     if (!Number.isInteger(Number(numGuys)) || !Number.isInteger(Number(numTrees)) || !Number.isInteger(Number(numGenerations))) {
-        console.log('The number of guys, trees, and generations must be integers.');
-        return res.status(400).send('The number of guys, trees, and generations must be integers.');
+        console.log('The number of creatures, trees, and generations must be integers.');
+        return res.status(400).send('The number of creatures, trees, and generations must be integers.');
     }
 
     // Check if guysData and treesData have the correct number of numerical values
@@ -50,8 +50,8 @@ app.post('/runSimulation', (req, res) => {
     const treesDataArray = treesData.trim().split(/\s+/); 
 
     if (guysDataArray.length !== numGuys * 5) {
-        console.log(`Guys data must contain exactly ${numGuys * 5} numerical values.`);
-        return res.status(400).send(`Guys data must contain exactly ${numGuys * 5} numerical values.`);
+        console.log(`Creatures data must contain exactly ${numGuys * 5} numerical values.`);
+        return res.status(400).send(`Creatures data must contain exactly ${numGuys * 5} numerical values.`);
     }
 
     if (treesDataArray.length !== numTrees * 3) {
@@ -61,8 +61,8 @@ app.post('/runSimulation', (req, res) => {
 
     // Ensure all values in guysData and treesData are numbers
     if (!guysDataArray.every(value => !isNaN(value)) || !treesDataArray.every(value => !isNaN(value))) {
-        console.log('Guys data and trees data must only contain numbers.');
-        return res.status(400).send('Guys data and trees data must only contain numbers.');
+        console.log('Creatures data and trees data must only contain numbers.');
+        return res.status(400).send('Creatures data and trees data must only contain numbers.');
     }
 
     // Write input data to input.txt
@@ -84,7 +84,7 @@ app.post('/runSimulation', (req, res) => {
           }
 
         // Construct command to execute simulation
-        const command = `./evolve < input.txt`;
+        const command = `./evolve`;
         //const command = `./evolve < ${inputFilePath}`;
         console.log('Executing command:', command);
 

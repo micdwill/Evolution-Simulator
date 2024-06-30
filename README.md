@@ -1,5 +1,13 @@
 # Evolution Simulation Project
 
+## How to play
+
+You can go play this game at
+
+```bash
+https://fast-reaches-37987-bde7d538d636.herokuapp.com
+```
+
 ## Overview
 
 Welcome to the Evolutionary Simulation project! This project simulates the dynamic interactions and evolution of two species types: *guys* (creatures) and *trees* (food sources). The simulation models how these species evolve over multiple generations through natural selection, competition, predation, and reproduction.
@@ -71,10 +79,10 @@ npm install
 
 3. **Compile the C++ code**:
 
-Compile `evolve.cpp` to generate the `evolve` executable using your preferred C++ compiler (e.g., `g++`).
+Compile `evolve.cpp` to generate the `evolve` executable using the `Makefile`.
 
 ```markdown
-g++ -o evolve evolve.cpp -std=c++17
+make
 ```
 
 ### Running the Simulation
