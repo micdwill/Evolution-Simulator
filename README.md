@@ -41,12 +41,55 @@ The project is implemented using C++ for the simulation backend, JavaScript (wit
 
 ![Results](Screenshots/Bottom.png)
 
+## Frontend Results
+
+The front end only shows the number of creatures, predators, and preys throughout each generation (accompanied 
+by the Python graphical representation of this data). In order to see more in depth results and statistics, read output when running `evolve.cpp` **without** quiet mode being turned on (i.e. without the `--quiet` tag).
+
+The frontend simulation automatically compiles in quiet mode to improve runtime.
+
+## Input Format
+
+The input is read from standard input or a file and follows this structure:
+
+1. **Number of Guys**: An integer indicating how many guys will be in the simulation initially.
+2. **Guys' Data**: Each guy is defined by five attributes:
+- **Size**: The size of the guy. Bigger guys get first access to trees and are able to access higher trees. Additionally, predators can only kill other guys when they are a larger size.
+- **Speed**: The speed of the guy, enabling them to reach trees that are farther way.
+- **Food Needed**: The amount of food the guy needs to survive.
+- **Location**: The 1 dimensional location of the guy.
+- **Predator**: Indicates if the guy is a predator (1 for predator, 0 for prey).
+3. **Number of Trees**: An integer indicating how many trees will be in the simulation initially.
+4. **Trees' Data**: Each tree is defined by three attributes:
+- **Height**: The height of the tree.
+- **Location**: The 1 dimensional location of the tree.
+- **Number of Fruits**: The number of fruits the tree initially has, each one feeds 0.5 of a guy's appetite.
+
+### Example input:
+
+```markdown
+3
+4.0 1.5 2.0 3.0 0
+3.2 1.3 2.2 2.0 1
+2.1 1.4 1.9 1.0 0
+2
+2.0 2.0 10
+3.3 3.0 8
+10
+```
+
+### In this example:
+
+- There are 3 guys (1 prey and 1 predator) with specific attributes.
+- There are 2 trees with specific attributes.
+- The simulation runs for 10 generations.
+
 ## Features
 
 - **Natural Selection**: Guys compete for food (fruits from trees). Those who cannot meet their food requirements die off, while the survivors reproduce.
-- **Reproduction**: Surviving guys reproduce, passing on their traits with slight variations to the next generation.
-- **Predation**: Some guys are predators and can kill other guys to meet their food requirements.
-- **Tree Reproduction**: Trees with sufficient fruits can reproduce and spread in the environment.
+- **Reproduction**: Surviving guys reproduce, passing on their traits with slight variations to the next generation. There is 0.5% chance a predator will mutate into a prey and vice versa.
+- **Predation**: Some guys are predators and can kill other guys to meet their food requirements. However, prey will attempt to help each other and may be able to survive without sufficient food. This creates a dynamic of `Game Theory` as intitial conditions may determine which species of creatures survive.
+- **Tree Reproduction**: Trees with sufficient fruits reamining can reproduce and spread in the environment.
 - **Statistics**: After each generation, the simulation provides detailed statistics about the surviving guys and trees.
 
 ## Getting Started
@@ -85,7 +128,7 @@ Compile `evolve.cpp` to generate the `evolve` executable using the `Makefile`.
 make
 ```
 
-### Running the Simulation
+### Running the Frontend Simulation Locally
 
 1. **Start the Node.js server**:
 
@@ -123,42 +166,6 @@ python graphGens.py
 
 4. Observe the output and adjust parameters as needed for further testing or analysis.
 
-## Input Format
-
-The input is read from standard input or a file and follows this structure:
-
-1. **Number of Guys**: An integer indicating how many guys will be in the simulation initially.
-2. **Guys' Data**: Each guy is defined by five attributes:
-- **Size**: The size of the guy.
-- **Speed**: The speed of the guy.
-- **Food Needed**: The amount of food the guy needs to survive.
-- **Location**: The initial location of the guy.
-- **Predator**: Indicates if the guy is a predator (1 for predator, 0 for prey).
-3. **Number of Trees**: An integer indicating how many trees will be in the simulation initially.
-4. **Trees' Data**: Each tree is defined by three attributes:
-- **Height**: The height of the tree.
-- **Location**: The location of the tree.
-- **Number of Fruits**: The number of fruits the tree initially has.
-
-### Example input:
-
-```markdown
-3
-1.0 1.5 2.0 3.0 0
-1.2 1.3 2.2 2.0 1
-1.1 1.4 1.9 1.0 0
-2
-5.0 2.0 10
-6.0 3.0 8
-10
-```
-
-### In this example:
-
-- There are 3 guys with specific attributes.
-- There are 2 trees with specific attributes.
-- The simulation runs for 10 generations.
-
 ## Output
 
 The simulation outputs statistics for each generation, including:
@@ -179,6 +186,7 @@ The simulation outputs statistics for each generation, including:
 - **script.js**: JavaScript file handling user input validation, sending data to the server, and displaying results.
 - **styles.css**: Improves look of user interface
 - **graphGens.py**: Python script to generate a stacked line graph of population dynamics over generations.
+- **Makefile**: Compiles C++ code
 
 ## How It Works
 
@@ -194,10 +202,10 @@ The simulation outputs statistics for each generation, including:
 
 ## Scoring system
 
-This project also acts as a game! Finals scores are shown and high score is maintained. The scoring system is as follows: 
+Final scores are shown and high score is maintained. The scoring system is as follows: 
 
 ```markdown
-(Final # of guys) / ((Original # of guys)^(1/2) * (# of generations)^(1/3) * (Original # of food on trees))
+1000 * (Final # of guys) / ((Original # of guys)^(1/2) * (# of generations)^(1/3) * (Original # of food on trees))
 ```
 
 ## Contributing
